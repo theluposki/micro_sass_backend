@@ -1,4 +1,4 @@
-import { register_repository } from "../repositories/register_repository.js";
+import { auth_repository } from "../repositories/auth_repository.js";
 
 /**
  * Registra um novo usuário no sistema.
@@ -16,17 +16,32 @@ import { register_repository } from "../repositories/register_repository.js";
  * // A função register irá enviar uma resposta com o resultado da operação de registro.
  */
 
-export const register = async (req, res) => {
+export const auth_controller = async (req, res) => {
     try {
-        const result = await register_repository(req.body);
+        const result = await auth_repository(req.body);
 
         if(result.error) {
             res.status(400).json(result)
             return
         }
 
-        res.status(201).json(result)
+        res.status(200).json(result)
     } catch (error) {
         console.log(error)
     }
+}
+
+export const auth = async (req, res) => {
+  try {
+      const result = await register_repository(req.body);
+
+      if(result.error) {
+          res.status(400).json(result)
+          return
+      }
+
+      res.status(201).json(result)
+  } catch (error) {
+      console.log(error)
+  }
 }

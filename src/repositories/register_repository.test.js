@@ -2,11 +2,11 @@ import { test, expect, describe, beforeAll } from 'vitest'
 import supertest from 'supertest'
 import app from '../app.js'
 
-describe('# /users', () => {
+describe('# /users registro', () => {
 
   let userId;
 
-  test('# POST /users/register', async () => {
+  test('# POST /users/register deve registrar um novo usuário.', async () => {
     const userMock = {
       nickname: "luposki!",
       email: "luposki@gmail.com",
@@ -21,7 +21,7 @@ describe('# /users', () => {
     expect(response.body.message).toEqual("registrado com sucesso.")
   })
 
-  test('# POST /users/register error nickname', async () => {
+  test('# POST /users/register deve retornar um erro se o nome de usuário for menor que 8 caracter.', async () => {
     const userMock = {
       nickname: "luposki",
       email: "luposki@gmail.com",
@@ -34,10 +34,10 @@ describe('# /users', () => {
     expect(response.body.error).toEqual("nome de usuário de ter no minimo 8 caracter.")
   })
 
-  test('# POST /users/register error e-mail', async () => {
+  test('# POST /users/register deve retornar um erro se o e-mail for inválido.', async () => {
     const userMock = {
       nickname: "luposki1",
-      email: "luposkigmailom", 
+      email: "luposki@gmailom", 
       password: "123456789"
     }
 
