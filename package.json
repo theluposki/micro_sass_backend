@@ -1,0 +1,25 @@
+{
+  "name": "script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --no-warnings src/index.js",
+    "dev": "node --watch --env-file=.env --no-warnings src/index.js",
+    "test:dev": "node --test --watch *.test.js",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "theluposki",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "supertest": "^6.3.4",
+    "vitest": "^1.4.0"
+  }
+}
